@@ -1,0 +1,26 @@
+# Godot
+.godot/
+*.translation
+export.cfg
+export_presets.cfg.bak
+
+# Builds
+build/
+*.apk
+*.aab
+*.ipa
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+*.import
+
+# Android
+android/
+local.properties
+*.keystore
+*.jks

@@ -1,0 +1,47 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Godot 4.3
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.3.0
+          use-dotnet: false
+          include-templates: true
+
+      - name: Cache Godot
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/godot
+          key: godot-4.3-${{ runner.os }}
+
+      - name: Import project (generate .godot)
+        run: |
+          mkdir -p build
+          godot --headless --path . --import --quit-after 5 || true
+          sleep 2
+          godot --headless --path . --editor --quit-after 3 || true
+
+      - name: Export Android APK (debug)
+        run: |
+          set -e
+          godot --headless --path . --export-debug "Android" build/PixelOrbit-debug.apk
+          ls -la build/
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: PixelOrbit-APK
+          path: build/*.apk
+          if-no-files-found: error
+          retention-days: 14

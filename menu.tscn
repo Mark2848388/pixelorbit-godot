@@ -1,0 +1,273 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bg/stars.png" id="2"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2")
+stretch_mode = 1
+expand_mode = 1
+
+[node name="ColorOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.06, 0.15, 0.75)
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_constants/separation = 16
+
+[node name="CoinsLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_font_sizes/font_size = 18
+text = "✦ 0"
+
+[node name="GemsLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.5, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "◆ 0"
+
+[node name="LevelLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 18
+text = "Ур. 1"
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Center/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "PIXEL ORBIT"
+horizontal_alignment = 1
+
+[node name="WorldsBtn" type="Button" parent="Center/VBox"]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+text = "МИРЫ"
+
+[node name="InfiniteBtn" type="Button" parent="Center/VBox"]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+text = "БЕСКОНЕЧНЫЙ"
+
+[node name="CampaignBtn" type="Button" parent="Center/VBox"]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+text = "КАМПАНИЯ"
+
+[node name="SideLeft" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -80.0
+offset_right = 72.0
+offset_bottom = 80.0
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="SkillsBtn" type="Button" parent="SideLeft"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+text = "SK"
+
+[node name="BuildBtn" type="Button" parent="SideLeft"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+text = "BLD"
+
+[node name="SideRight" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -40.0
+offset_right = -12.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SettingsBtn" type="Button" parent="SideRight"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+text = "⚙"
+
+[node name="SkillsPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -220.0
+offset_right = 180.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="SkillsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="SkillsPanel/Margin"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="SkillsPanel/Margin/VBox"]
+layout_mode = 2
+text = "НАВЫКИ"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="SkillsPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="List" type="VBoxContainer" parent="SkillsPanel/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Close" type="Button" parent="SkillsPanel/Margin/VBox"]
+layout_mode = 2
+text = "ЗАКРЫТЬ"
+
+[node name="BuildPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -220.0
+offset_right = 180.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="BuildPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="BuildPanel/Margin"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="BuildPanel/Margin/VBox"]
+layout_mode = 2
+text = "ЗДАНИЯ"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="BuildPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="List" type="VBoxContainer" parent="BuildPanel/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Close" type="Button" parent="BuildPanel/Margin/VBox"]
+layout_mode = 2
+text = "ЗАКРЫТЬ"
+
+[node name="WorldPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -200.0
+offset_right = 160.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="WorldPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="WorldPanel/Margin"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="WorldPanel/Margin/VBox"]
+layout_mode = 2
+text = "МИРЫ"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="WorldPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="List" type="VBoxContainer" parent="WorldPanel/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Close" type="Button" parent="WorldPanel/Margin/VBox"]
+layout_mode = 2
+text = "ЗАКРЫТЬ"
